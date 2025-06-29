@@ -12,7 +12,7 @@ const HomeScreen = () => {
   if (nowPlayingQuery.isLoading) {
     return (
       <View className="justify-center items-center flex-1">
-        <ActivityIndicator color="purple" size={50}></ActivityIndicator>
+        <ActivityIndicator color="black" size={50}></ActivityIndicator>
       </View>
     );
   }

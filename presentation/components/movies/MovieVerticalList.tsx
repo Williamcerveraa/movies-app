@@ -8,11 +8,13 @@ import {
 import MoviePoster from "./MoviePoster";
 import { Movie } from "../../../infrastructure/interfaces/movie.interface";
 import { useEffect, useRef } from "react";
+import MoviePosterCard from "./MoviePosterCard";
 
 interface Props {
   title?: string;
   movies: Movie[];
   className?: string;
+  name? : string;
 
   loadNextPage?: () => void;
 }
@@ -50,20 +52,15 @@ const MovieVerticalList = ({
   };
   return (
     <View className={` ${className}`}>
-      {title && (
-        <Text className="text-2xl font-bold px-3 mb-3 mt-3">{title}</Text>
-      )}
-
       <FlatList
         data={movies}
         // Para quitar la barra horizontal debajo de los componentes
         showsHorizontalScrollIndicator={false}
         keyExtractor={(item, index) => `${item.id}-${index}`}
         renderItem={({ item }) => (
-          <MoviePoster id={item.id} poster={item.poster} />
+          <MoviePosterCard id={item.id} poster={item.poster} description={item.description} title={item.title} name={item.name} smallPoster/>
         )}
         onScroll={onScroll}
-        numColumns={2}
       />
     </View>
   );

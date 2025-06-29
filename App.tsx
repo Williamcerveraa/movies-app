@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import Navigation from "./Navigation";
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { AuthProvider } from "./AuthContext";
 
 const queryClient = new QueryClient();
 export default function App() {
@@ -12,9 +13,10 @@ export default function App() {
     <SafeAreaProvider>
       <GestureHandlerRootView>
       <QueryClientProvider client={queryClient}>
-        {/* <HomeScreen></HomeScreen> */}
+        <AuthProvider>
         <Navigation></Navigation>
         <StatusBar style="auto" />
+        </AuthProvider>
       </QueryClientProvider>
       </GestureHandlerRootView>
     </SafeAreaProvider>

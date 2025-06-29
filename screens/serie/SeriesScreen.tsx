@@ -6,7 +6,7 @@ import MovieHeader from "../../presentation/components/movie/MovieHeader";
 import MovieDescription from "../../presentation/components/movie/MovieDescription";
 import MovieCast from "../../presentation/components/movie/MovieCast";
 
-const MovieScreen = () => {
+const SeriesScreen = () => {
   const { params } = useRoute<any>();
   const navigation = useNavigation<any>();
 
@@ -33,4 +33,4 @@ const MovieScreen = () => {
   );
 };
 
-export default MovieScreen;
+export default SeriesScreen;

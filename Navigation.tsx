@@ -9,11 +9,13 @@ import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { BlurView } from "expo-blur";
 import UserScreen from "./screens/user/UserScreen";
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
+import FavoritesScreen from "./screens/favorites/FavoritesScreen";
+import { TabBarIndicator } from "react-native-tab-view";
 
 const Tab = createBottomTabNavigator();
 const HomeStackNavigator = createNativeStackNavigator();
-
 const UserStackNavigator = createNativeStackNavigator();
+const FavoritesStackNavigator = createNativeStackNavigator();
 
 function HomeScreenStack() {
   return (
@@ -55,14 +57,44 @@ function UserScreenStack() {
   );
 }
 
+function FavoritesScreenStack() {
+  return (
+    <FavoritesStackNavigator.Navigator initialRouteName="Favorites">
+      <FavoritesStackNavigator.Screen
+        name="Favorites"
+        component={FavoritesScreen}
+        options={{ title: "Tus favoritos" }}
+      ></FavoritesStackNavigator.Screen>
+      <FavoritesStackNavigator.Screen
+        name="MovieDetailById"
+        component={MovieScreen}
+        options={{
+          headerBackButtonDisplayMode: "minimal",
+          title: "Detalles",
+          headerTintColor: "black",
+          headerRight: () => (
+            <MaterialCommunityIcons
+              name="cards-heart-outline"
+              size={28}
+              color="black"
+            />
+          ),
+        }}
+      ></FavoritesStackNavigator.Screen>
+    </FavoritesStackNavigator.Navigator>
+  );
+}
+
 const TabNavigation = () => {
   return (
     <Tab.Navigator
       initialRouteName="HomeScreen"
       screenOptions={
         {
-          //tabBarActiveTintColor : 'blue'
-          //headerShown: false,
+          tabBarActiveTintColor : 'black',
+          tabBarStyle :{
+            borderBottomColor : 'black'
+          }
         }
       }
     >
@@ -71,7 +103,6 @@ const TabNavigation = () => {
         component={HomeScreenStack}
         options={{
           tabBarLabel: "Películas",
-          tabBarActiveTintColor: "red",
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="movie-open" size={28} color={color} />
           ),
@@ -83,9 +114,19 @@ const TabNavigation = () => {
         component={UserScreenStack}
         options={{
           tabBarLabel: "Cuenta",
-          tabBarActiveTintColor: "red",
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="account" size={28} color={color} />
+          ),
+          headerShown: false,
+        }}
+      ></Tab.Screen>
+      <Tab.Screen
+        name="FavoritesScreen"
+        component={FavoritesScreenStack}
+        options={{
+          tabBarLabel: "Favoritos",
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="cards-heart" size={28} color={color} />
           ),
           headerShown: false,
         }}

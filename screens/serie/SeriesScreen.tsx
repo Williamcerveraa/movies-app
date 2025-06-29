@@ -1,17 +1,17 @@
 import { View, Text, ActivityIndicator, ScrollView } from "react-native";
 import React from "react";
 import { useNavigation, RouteProp, useRoute } from "@react-navigation/native";
-import { useMovie } from "../../presentation/hooks/useMovie";
-import MovieHeader from "../../presentation/components/movie/MovieHeader";
 import MovieDescription from "../../presentation/components/movie/MovieDescription";
 import MovieCast from "../../presentation/components/movie/MovieCast";
+import { useSerie } from "../../presentation/hooks/useSerie";
+import SerieHeader from "../../presentation/components/serie/SerieHeader";
 
-const SeriesScreen = () => {
+const SerieScreen = () => {
   const { params } = useRoute<any>();
   const navigation = useNavigation<any>();
 
-  const { movieQuery, castQuery } = useMovie(params.id);
-  if (movieQuery.isLoading || !movieQuery.data) {
+  const { SerieQuery, castQuery } = useSerie(params.id);
+  if (SerieQuery.isLoading || !SerieQuery.data) {
     return (
       <View className="flex flex-1 justify-center items-center">
         <Text className="mb-4">Espere por favor</Text>
@@ -21,16 +21,14 @@ const SeriesScreen = () => {
   }
   return (
     <ScrollView>
-      {/* <Text >{movieQuery.data?.title}</Text> */}
-      <MovieHeader
-        poster={movieQuery.data.poster}
-        originalTitle={movieQuery.data.originalTitle}
-        title={movieQuery.data.title}
-      ></MovieHeader>
-      <MovieDescription movie={movieQuery.data}></MovieDescription>
+       <SerieHeader
+        name={SerieQuery.data.name}
+        poster={SerieQuery.data.poster}
+      ></SerieHeader>
+      {/* <MovieDescription movie={SerieQuery.data}></MovieDescription> */}
       <MovieCast cast={castQuery.data ?? [] }></MovieCast>
     </ScrollView>
   );
 };
 
-export default SeriesScreen;
+export default SerieScreen;

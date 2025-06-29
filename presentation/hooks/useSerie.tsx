@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { getMovieCastAction } from '../../core/actions/movie/get-movie-cast.action';
 import { getSerieByIdAction } from '../../core/actions/serie/get-serie-by-id.action';
 
-export const useMovie = (id: number) => {
+export const useSerie = (id: number) => {
   const SerieQuery = useQuery({
     queryKey: ['serie', id],
     queryFn: () => getSerieByIdAction(id),

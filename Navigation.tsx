@@ -11,6 +11,7 @@ import UserScreen from "./screens/user/UserScreen";
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import FavoritesScreen from "./screens/favorites/FavoritesScreen";
 import { TabBarIndicator } from "react-native-tab-view";
+import SerieScreen from "./screens/serie/SeriesScreen";
 
 const Tab = createBottomTabNavigator();
 const HomeStackNavigator = createNativeStackNavigator();
@@ -68,6 +69,22 @@ function FavoritesScreenStack() {
       <FavoritesStackNavigator.Screen
         name="MovieDetailById"
         component={MovieScreen}
+        options={{
+          headerBackButtonDisplayMode: "minimal",
+          title: "Detalles",
+          headerTintColor: "black",
+          headerRight: () => (
+            <MaterialCommunityIcons
+              name="cards-heart-outline"
+              size={28}
+              color="black"
+            />
+          ),
+        }}
+      ></FavoritesStackNavigator.Screen>
+      <FavoritesStackNavigator.Screen
+        name="SerieDetailById"
+        component={SerieScreen}
         options={{
           headerBackButtonDisplayMode: "minimal",
           title: "Detalles",

@@ -13,9 +13,15 @@ interface Props {
 
 const MoviePosterCard = ({ id, poster, smallPoster, className, title, description, name } : Props) => {
   const navigation = useNavigation<any>();
+  const isMovie = !!title; 
   return (
     <Pressable className={`active:opacity-90 px-2 ${className}`}
-        onPress={() => navigation.navigate('MovieDetailById', { id: id })}
+        onPress={() =>
+    navigation.navigate(
+      isMovie ? 'MovieDetailById' : 'SerieDetailById',
+      { id }
+    )
+  }
         >
     <View className="flex-row p-3 ">
      <Image

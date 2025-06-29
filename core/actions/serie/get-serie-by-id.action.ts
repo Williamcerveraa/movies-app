@@ -1,20 +1,20 @@
-import { CompleteMovie } from "../../../infrastructure/interfaces/movie.interface";
-import { MovieDBMovieResponse } from "../../../infrastructure/interfaces/moviedb-movie.response";
-import { MovieMapper } from "../../../infrastructure/mappers/movie.mapper";
-import { movieApi } from "../../api/movie-api";
+import { MovieDBSerieResponse } from "../../../infrastructure/interfaces/moviedb-serie.response";
+import { CompleteSerie } from "../../../infrastructure/interfaces/serie.interface";
+import { SerieMapper } from "../../../infrastructure/mappers/serie.mapper";
+import { serieApi } from "../../api/serie-api";
 
 
 export const getSerieByIdAction = async (
   id: number | string
-) : Promise <CompleteMovie> => {
+) : Promise <CompleteSerie> => {
   try {
-    const { data } = await movieApi.get<MovieDBMovieResponse>(`/${id}`);
+    const { data } = await serieApi.get<MovieDBSerieResponse>(`/${id}`);
 
     console.log('Película - HTTP cargada');
     console.log(data);
     
 
-    return MovieMapper.fromTheMovieDBToCompleteMovie(data);
+    return SerieMapper.fromTheMovieDBToCompleteSerie(data)
   } catch (error) {
     console.log(error);
     throw 'Cannot load now playing movies';

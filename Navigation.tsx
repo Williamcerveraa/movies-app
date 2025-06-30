@@ -1,4 +1,3 @@
-import { View, Text } from "react-native";
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
@@ -8,10 +7,10 @@ import MovieScreen from "./screens/movie/MovieScreen";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { BlurView } from "expo-blur";
 import UserScreen from "./screens/user/UserScreen";
-import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import FavoritesScreen from "./screens/favorites/FavoritesScreen";
 import { TabBarIndicator } from "react-native-tab-view";
 import SerieScreen from "./screens/serie/SeriesScreen";
+import { FavoriteIcon, MovieOpenIcon } from "./presentation/components/icons/Icons";
 
 const Tab = createBottomTabNavigator();
 const HomeStackNavigator = createNativeStackNavigator();
@@ -34,11 +33,7 @@ function HomeScreenStack() {
           title: "Detalles",
           headerTintColor: "black",
           headerRight: () => (
-            <MaterialCommunityIcons
-              name="cards-heart-outline"
-              size={28}
-              color="black"
-            />
+            <FavoriteIcon/>
           ),
         }}
       ></HomeStackNavigator.Screen>
@@ -64,7 +59,7 @@ function FavoritesScreenStack() {
       <FavoritesStackNavigator.Screen
         name="Favorites"
         component={FavoritesScreen}
-        options={{ title: "Tus favoritos" }}
+        options={{ title: "Tus favoritos"}}
       ></FavoritesStackNavigator.Screen>
       <FavoritesStackNavigator.Screen
         name="MovieDetailById"
@@ -74,12 +69,15 @@ function FavoritesScreenStack() {
           title: "Detalles",
           headerTintColor: "black",
           headerRight: () => (
-            <MaterialCommunityIcons
-              name="cards-heart-outline"
-              size={28}
-              color="black"
-            />
+            <FavoriteIcon/>
           ),
+          // headerRight: () => (
+          //   <MaterialCommunityIcons
+          //     name="cards-heart-outline"
+          //     size={28}
+          //     color="black"
+          //   />
+          // ),
         }}
       ></FavoritesStackNavigator.Screen>
       <FavoritesStackNavigator.Screen
@@ -90,11 +88,7 @@ function FavoritesScreenStack() {
           title: "Detalles",
           headerTintColor: "black",
           headerRight: () => (
-            <MaterialCommunityIcons
-              name="cards-heart-outline"
-              size={28}
-              color="black"
-            />
+            <FavoriteIcon/>
           ),
         }}
       ></FavoritesStackNavigator.Screen>
@@ -121,7 +115,8 @@ const TabNavigation = () => {
         options={{
           tabBarLabel: "Películas",
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="movie-open" size={28} color={color} />
+             <MaterialCommunityIcons name="movie-open" size={28} color={color} />
+            // <MovieOpenIcon color= {color}/>
           ),
           headerShown: false,
         }}

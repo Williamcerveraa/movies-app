@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import { getMovieCastAction } from '../../core/actions/movie/get-movie-cast.action';
 import { getSerieByIdAction } from '../../core/actions/serie/get-serie-by-id.action';
+import { getSerieCastAction } from '../../core/actions/serie/get-serie-cast.action';
 
 export const useSerie = (id: number) => {
   const SerieQuery = useQuery({
@@ -9,14 +9,14 @@ export const useSerie = (id: number) => {
     staleTime: 1000 * 60 * 60 * 24, // 24 hrs
   });
 
-  const castQuery = useQuery({
-    queryKey: ['movie', id, 'cast'],
-    queryFn: () => getMovieCastAction(id),
+  const castSerieQuery = useQuery({
+    queryKey: ['serie', id, 'cast'],
+    queryFn: () => getSerieCastAction(id),
     staleTime: 1000 * 60 * 60 * 24,
   });
 
   return {
     SerieQuery,
-    castQuery,
+    castSerieQuery,
   };
 };

@@ -4,13 +4,17 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "./screens/home/HomeScreen";
 import MovieScreen from "./screens/movie/MovieScreen";
-import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { BlurView } from "expo-blur";
 import UserScreen from "./screens/user/UserScreen";
 import FavoritesScreen from "./screens/favorites/FavoritesScreen";
 import { TabBarIndicator } from "react-native-tab-view";
 import SerieScreen from "./screens/serie/SeriesScreen";
-import { FavoriteIcon, MovieOpenIcon } from "./presentation/components/icons/Icons";
+import {
+  AccountIcon,
+  FavoriteIcon,
+  FavoriteIconOutline,
+  MovieOpenIcon,
+} from "./presentation/components/icons";
 
 const Tab = createBottomTabNavigator();
 const HomeStackNavigator = createNativeStackNavigator();
@@ -23,7 +27,7 @@ function HomeScreenStack() {
       <HomeStackNavigator.Screen
         name="Home"
         component={HomeScreen}
-        options={{ title: "MoviesApp" , headerTintColor: 'black',}}
+        options={{ title: "MoviesApp", headerTintColor: "black" }}
       ></HomeStackNavigator.Screen>
       <HomeStackNavigator.Screen
         name="MovieDetailById"
@@ -32,9 +36,7 @@ function HomeScreenStack() {
           headerBackButtonDisplayMode: "minimal",
           title: "Detalles",
           headerTintColor: "black",
-          headerRight: () => (
-            <FavoriteIcon/>
-          ),
+          headerRight: () => <FavoriteIconOutline />,
         }}
       ></HomeStackNavigator.Screen>
     </HomeStackNavigator.Navigator>
@@ -59,7 +61,7 @@ function FavoritesScreenStack() {
       <FavoritesStackNavigator.Screen
         name="Favorites"
         component={FavoritesScreen}
-        options={{ title: "Tus favoritos"}}
+        options={{ title: "Tus favoritos" }}
       ></FavoritesStackNavigator.Screen>
       <FavoritesStackNavigator.Screen
         name="MovieDetailById"
@@ -68,9 +70,7 @@ function FavoritesScreenStack() {
           headerBackButtonDisplayMode: "minimal",
           title: "Detalles",
           headerTintColor: "black",
-          headerRight: () => (
-            <FavoriteIcon/>
-          ),
+          headerRight: () => <FavoriteIconOutline />,
           // headerRight: () => (
           //   <MaterialCommunityIcons
           //     name="cards-heart-outline"
@@ -87,9 +87,7 @@ function FavoritesScreenStack() {
           headerBackButtonDisplayMode: "minimal",
           title: "Detalles",
           headerTintColor: "black",
-          headerRight: () => (
-            <FavoriteIcon/>
-          ),
+          headerRight: () => <FavoriteIconOutline />,
         }}
       ></FavoritesStackNavigator.Screen>
     </FavoritesStackNavigator.Navigator>
@@ -100,14 +98,12 @@ const TabNavigation = () => {
   return (
     <Tab.Navigator
       initialRouteName="HomeScreen"
-      screenOptions={
-        {
-          tabBarActiveTintColor : 'black',
-          tabBarStyle :{
-            borderBottomColor : 'black'
-          }
-        }
-      }
+      screenOptions={{
+        tabBarActiveTintColor: "black",
+        tabBarStyle: {
+          borderBottomColor: "black",
+        },
+      }}
     >
       <Tab.Screen
         name="HomeScreen"
@@ -115,8 +111,8 @@ const TabNavigation = () => {
         options={{
           tabBarLabel: "Películas",
           tabBarIcon: ({ color }) => (
-             <MaterialCommunityIcons name="movie-open" size={28} color={color} />
-            // <MovieOpenIcon color= {color}/>
+            //<MaterialCommunityIcons name="movie-open" size={28} color={color} />
+            <MovieOpenIcon color={color} />
           ),
           headerShown: false,
         }}
@@ -127,7 +123,8 @@ const TabNavigation = () => {
         options={{
           tabBarLabel: "Cuenta",
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="account" size={28} color={color} />
+            // <MaterialCommunityIcons name="account" size={28} color={color} />
+            <AccountIcon color={color} />
           ),
           headerShown: false,
         }}
@@ -138,7 +135,8 @@ const TabNavigation = () => {
         options={{
           tabBarLabel: "Favoritos",
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="cards-heart" size={28} color={color} />
+            //<MaterialCommunityIcons name="cards-heart" size={28} color={color} />
+            <FavoriteIcon color={color} />
           ),
           headerShown: false,
         }}

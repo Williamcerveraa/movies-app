@@ -1,20 +1,17 @@
-import { View, Text, ActivityIndicator, ScrollView } from "react-native";
+import { View, ScrollView } from "react-native";
 import React from "react";
 import { useMovies } from "../../presentation/hooks/useMovies";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import MainSlideshow from "../../presentation/components/movies/MainSlideshow";
 import MovieHorizontalList from "../../presentation/components/movies/MovieHorizontalList";
+import ActivityIndicatorCustom from "../../presentation/shared/ActivityIndicatorCustom";
 
 const HomeScreen = () => {
   const { nowPlayingQuery, popularQuery, topRatedQuery, upcomingQuery } = useMovies();
 
   const safeArea = useSafeAreaInsets();
   if (nowPlayingQuery.isLoading) {
-    return (
-      <View className="justify-center items-center flex-1">
-        <ActivityIndicator color="black" size={50}></ActivityIndicator>
-      </View>
-    );
+    return <ActivityIndicatorCustom/>;
   }
 
   return (

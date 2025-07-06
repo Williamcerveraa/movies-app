@@ -1,9 +1,10 @@
-import { View, Text, ActivityIndicator } from "react-native";
-import React, { useEffect } from "react";
+import { View } from "react-native";
+import React from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import MovieVerticalList from "../../presentation/components/movies/MovieVerticalList";
 import { useAuth } from "../../AuthContext";
 import { useFavoritesMovies } from "../../presentation/hooks/useFavoritesMovies";
+import ActivityIndicatorCustom from "../../presentation/shared/ActivityIndicatorCustom";
 
 const SeriesFavoritesScreen = () => {
   const { session_id, account_id } = useAuth();
@@ -15,11 +16,7 @@ const SeriesFavoritesScreen = () => {
   const safeArea = useSafeAreaInsets();
 
   if (seriesFavoritesQuery.isLoading) {
-    return (
-      <View className="justify-center items-center flex-1">
-        <ActivityIndicator color="black" size={50}></ActivityIndicator>
-      </View>
-    );
+    return <ActivityIndicatorCustom/>;
   }
 
   return (

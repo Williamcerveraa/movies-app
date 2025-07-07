@@ -36,7 +36,7 @@ function HomeScreenStack() {
           headerBackButtonDisplayMode: "minimal",
           title: "Detalles",
           headerTintColor: "black",
-          headerRight: () => <FavoriteIconOutline />,
+          // headerRight: () => <FavoriteIconOutline />,
         }}
       ></HomeStackNavigator.Screen>
     </HomeStackNavigator.Navigator>
@@ -61,7 +61,7 @@ function FavoritesScreenStack() {
       <FavoritesStackNavigator.Screen
         name="Favorites"
         component={FavoritesScreen}
-        options={{ title: "Tus favoritos" }}
+        options={{ title: "Tus favoritos",headerTintColor: "black" }}
       ></FavoritesStackNavigator.Screen>
       <FavoritesStackNavigator.Screen
         name="MovieDetailById"
@@ -70,7 +70,7 @@ function FavoritesScreenStack() {
           headerBackButtonDisplayMode: "minimal",
           title: "Detalles",
           headerTintColor: "black",
-          headerRight: () => <FavoriteIconOutline />,
+          // headerRight: () => <FavoriteIconOutline />,
           // headerRight: () => (
           //   <MaterialCommunityIcons
           //     name="cards-heart-outline"
@@ -87,7 +87,7 @@ function FavoritesScreenStack() {
           headerBackButtonDisplayMode: "minimal",
           title: "Detalles",
           headerTintColor: "black",
-          headerRight: () => <FavoriteIconOutline />,
+          // headerRight: () => <FavoriteIconOutline />,
         }}
       ></FavoritesStackNavigator.Screen>
     </FavoritesStackNavigator.Navigator>

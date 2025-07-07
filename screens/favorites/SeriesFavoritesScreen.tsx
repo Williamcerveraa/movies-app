@@ -1,5 +1,5 @@
 import { View } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import MovieVerticalList from "../../presentation/components/movies/MovieVerticalList";
 import { useAuth } from "../../AuthContext";
@@ -12,7 +12,14 @@ const SeriesFavoritesScreen = () => {
     session_id,
     account_id,
   });
+const [refreshing, setRefreshing] = useState(false);
 
+
+  const handleRefresh = async () => {
+    setRefreshing(true);
+    await seriesFavoritesQuery.refetch();
+    setRefreshing(false);
+  };
   const safeArea = useSafeAreaInsets();
 
   if (seriesFavoritesQuery.isLoading) {
@@ -25,6 +32,8 @@ const SeriesFavoritesScreen = () => {
         className="mb-5 pb-4"
         movies={seriesFavoritesQuery.data ?? []}
         title="En Cartelera"
+        onRefresh = {handleRefresh}
+        refreshing = {refreshing}
       ></MovieVerticalList>
     </View>
   );

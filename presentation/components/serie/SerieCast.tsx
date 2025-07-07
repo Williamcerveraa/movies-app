@@ -10,7 +10,7 @@ interface Props {
 
 const SerieCast = ({ cast }: Props) => {
   return (
-    <View className="mt-3 mb-20">
+    <View className="mt-3">
       <Text className="font-bold text-lg px-5">Actores</Text>
 
       <FlatList

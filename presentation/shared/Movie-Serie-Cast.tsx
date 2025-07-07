@@ -1,14 +1,13 @@
 import { View, Text } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
-import { Cast } from '../../../infrastructure/interfaces/cast';
-import { ActorCard } from './ActorCard';
-
+import { Cast } from '../../infrastructure/interfaces/cast';
+import { ActorCard } from '../components/movie/ActorCard';
 
 interface Props {
   cast: Cast[];
 }
 
-const MovieCast = ({ cast }: Props) => {
+const MovieSerieCast = ({ cast }: Props) => {
   return (
     <View className="mt-3 mb-10">
       <Text className="font-bold text-lg px-5">Actores</Text>
@@ -23,4 +22,4 @@ const MovieCast = ({ cast }: Props) => {
     </View>
   );
 };
-export default MovieCast;
+export default MovieSerieCast;

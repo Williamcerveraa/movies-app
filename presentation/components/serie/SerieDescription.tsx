@@ -10,7 +10,7 @@ const SerieDescription = ({ serie }: Props) => {
   const genres = serie.genres?.slice(0, 2).join(', ');
   return (
     <View className="mx-5 mb-4">
-      <View className="flex-row justify-center">
+      <View className="flex-row">
         <Text className="text-base">{new Date(serie.releaseDate).toLocaleDateString()}</Text>
         <Text className="text-base"> • {percentage}</Text>
         <Text className="text-base"> • {genres}</Text>

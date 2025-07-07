@@ -1,12 +1,11 @@
 import { ScrollView } from "react-native";
 import React from "react";
-import { useNavigation, RouteProp, useRoute } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { useSerie } from "../../presentation/hooks/useSerie";
-import SerieHeader from "../../presentation/components/serie/SerieHeader";
-import SerieDescription from "../../presentation/components/serie/SerieDescription";
-import SerieCast from "../../presentation/components/serie/SerieCast";
 import MovieSerieHeader from "../../presentation/shared/Movie-Serie-Header";
 import ActivityIndicatorCustom from "../../presentation/shared/ActivityIndicatorCustom";
+import MovieSerieCast from "../../presentation/shared/Movie-Serie-Cast";
+import MovieSerieDescription from "../../presentation/shared/Movie-Serie-Description";
 
 const SerieScreen = () => {
   const { params } = useRoute<any>();
@@ -26,8 +25,8 @@ const SerieScreen = () => {
         name={SerieQuery.data.name}
         poster={SerieQuery.data.poster}
       ></MovieSerieHeader>
-      <SerieDescription serie={SerieQuery.data}></SerieDescription>
-      <SerieCast cast={castSerieQuery.data ?? [] }></SerieCast>
+      <MovieSerieDescription item={SerieQuery.data} media_id={params.id}></MovieSerieDescription>
+      <MovieSerieCast cast={castSerieQuery.data ?? []}></MovieSerieCast>
     </ScrollView>
   );
 };

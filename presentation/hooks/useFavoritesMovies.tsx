@@ -13,7 +13,8 @@ export const useFavoritesMovies = ({
     queryKey: ["movies-favorites", account_id],
     queryFn: () => favoritesMoviesAction(account_id!, session_id!),
     enabled: !!session_id && !!account_id,
-    staleTime: 1000 * 60 * 60 * 24, // 24horas
+    staleTime: 1000 * 60, // 24horas
+    //refetchOnWindowFocus: true
   });
 
   const seriesFavoritesQuery = useQuery({

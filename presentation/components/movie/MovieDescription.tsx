@@ -11,7 +11,7 @@ const MovieDescription = ({ movie }: Props) => {
   const genres = movie.genres?.slice(0, 2).join(', ');
   return (
     <View className="mx-5 mb-4">
-      <View className="flex-row justify-center">
+      <View className="flex-row">
         <Text className="text-base">{new Date(movie.releaseDate).toLocaleDateString()}</Text>
         <Text className="text-base"> • {percentage}</Text>
         <Text className="text-base"> • {genres}</Text>

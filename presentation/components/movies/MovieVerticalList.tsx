@@ -4,6 +4,7 @@ import {
   FlatList,
   NativeSyntheticEvent,
   NativeScrollEvent,
+  RefreshControl,
 } from "react-native";
 import MoviePoster from "./MoviePoster";
 import { Movie } from "../../../infrastructure/interfaces/movie.interface";
@@ -15,6 +16,8 @@ interface Props {
   movies: Movie[];
   className?: string;
   name? : string;
+  onRefresh : ()=> void;
+  refreshing : boolean;
 
   loadNextPage?: () => void;
 }
@@ -24,6 +27,8 @@ const MovieVerticalList = ({
   movies,
   className,
   loadNextPage,
+  onRefresh,
+  refreshing
 }: Props) => {
   const isLoading = useRef(false);
 
@@ -61,6 +66,7 @@ const MovieVerticalList = ({
           <MoviePosterCard id={item.id} poster={item.poster} description={item.description} title={item.title} name={item.name} smallPoster/>
         )}
         onScroll={onScroll}
+        refreshControl={ <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
       />
     </View>
   );

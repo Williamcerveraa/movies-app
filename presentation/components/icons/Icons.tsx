@@ -12,7 +12,7 @@ export const FavoriteIconOutline = ({ media_id, props }: FavoritesProps) => {
   return (
     <Pressable
     className="rounded-xl bg-white px-4 py-3 mt-2"
-      onPress={() => addFavorite(media_id, "movie")}
+      onPress={() => addFavorite(media_id, "movie", true)}
     >
       <View className="flex-row justify-center items-start space-x-2">
         <Text className="font-semibold text-lg text-center text-black" >Agregar a favoritos</Text>
@@ -31,6 +31,15 @@ export const FavoriteIconOutline = ({ media_id, props }: FavoritesProps) => {
 export const MovieOpenIcon = (props: any) => (
   <MaterialCommunityIcons
     name="movie-open"
+    size={28}
+    color="black"
+    {...props}
+  />
+);
+
+export const SerieOpenIcon = (props: any) => (
+  <MaterialCommunityIcons
+    name="television"
     size={28}
     color="black"
     {...props}

@@ -8,28 +8,42 @@ import {
 import MoviePoster from "./MoviePoster";
 import { Movie } from "../../../infrastructure/interfaces/movie.interface";
 import { useEffect, useRef } from "react";
+import { Serie } from "../../../infrastructure/interfaces/serie.interface";
 
-interface Props {
+interface MediaBase {
+  id: number;
+  poster: string;
   title?: string;
-  movies: Movie[];
-  className?: string;
+  name?: string;
+}
+// interface Props {
+//   title?: string;
+//   movies?: Movie[];
+//   className?: string;
+//   items: MediaItem;
 
+//   loadNextPage?: () => void;
+// }
+interface Props<T extends MediaBase> {
+  title?: string;
+  items: T[];
+  className?: string;
   loadNextPage?: () => void;
 }
 
-const MovieHorizontalList = ({
+const MovieHorizontalList = <T extends MediaBase>({
   title,
-  movies,
   className,
   loadNextPage,
-}: Props) => {
+  items
+}: Props<T>) => {
   const isLoading = useRef(false);
 
   useEffect(() => {
     setTimeout(() => {
       isLoading.current = false;
     }, 200);
-  }, [movies]);
+  }, [items]);
 
   const onScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     if (isLoading.current) return;
@@ -56,12 +70,12 @@ const MovieHorizontalList = ({
 
       <FlatList
         horizontal
-        data={movies}
+        data={items}
         // Para quitar la barra horizontal debajo de los componentes
         showsHorizontalScrollIndicator={false}
         keyExtractor={(item, index) => `${item.id}-${index}`}
         renderItem={({ item }) => (
-            <MoviePoster id={item.id} poster={item.poster} />
+            <MoviePoster id={item.id} poster={item.poster} name={item.name} title={item.title}/>
         )}
         onScroll={onScroll}
       />

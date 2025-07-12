@@ -39,10 +39,10 @@ const HomeScreen = () => {
       <View className="mt-4 pb-10">
       {/* <MainSlideshow movies={nowPlayingQuery.data ?? []}></MainSlideshow> */}
 
-       <MovieHorizontalList className="mb-5" movies={nowPlayingQuery.data ?? []} title="En Cartelera"></MovieHorizontalList>
-      <MovieHorizontalList className="mb-5" movies={popularQuery.data ?? []} title="Populares"></MovieHorizontalList>
-      <MovieHorizontalList className="mb-5" movies={topRatedQuery.data ?.pages.flat() ?? []} title="Destacadas" loadNextPage={topRatedQuery.fetchNextPage}></MovieHorizontalList>
-      <MovieHorizontalList className="mb-5" movies={upcomingQuery.data ?? []} title="Próximamente"></MovieHorizontalList>
+       <MovieHorizontalList className="mb-5" items={nowPlayingQuery.data ?? []} title="En Cartelera"></MovieHorizontalList>
+      <MovieHorizontalList className="mb-5" items={popularQuery.data ?? []} title="Populares"></MovieHorizontalList>
+      <MovieHorizontalList className="mb-5" items={topRatedQuery.data ?.pages.flat() ?? []} title="Destacadas" loadNextPage={topRatedQuery.fetchNextPage}></MovieHorizontalList>
+      <MovieHorizontalList className="mb-5" items={upcomingQuery.data ?? []} title="Próximamente"></MovieHorizontalList>
     </View>
     </ScrollView>
   );

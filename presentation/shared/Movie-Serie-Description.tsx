@@ -22,7 +22,7 @@ const MovieSerieDescription = ({ item, media_id }: Props) => {
        <FavoriteIconOutline media_id = {media_id} />
 
       <Text className="font-bold mt-3 text-lg">Sipnosis</Text>
-      <Text className="font-normal mt-1 text-sm">{item.description}</Text>
+      <Text className="font-normal mt-1 text-sm">{item.description ? item.description : "No hay Sipnosis."}</Text>
     </View>
   );
 };

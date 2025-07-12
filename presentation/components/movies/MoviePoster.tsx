@@ -7,13 +7,19 @@ interface Props {
   smallPoster?: boolean;
   className?: string;
   title?: string;
+  name?: string;
 }
 
-const MoviePoster = ({ id, poster, smallPoster = false, className, title }: Props) => {
+const MoviePoster = ({ id, poster, smallPoster = false, className, title, name}: Props) => {
    const navigation = useNavigation<any>();
+   const isMovie = !!title;
+  const navigateToDetail = () => {
+    const screen = isMovie ? 'MovieDetailById' : 'SerieDetailById';
+    navigation.navigate(screen, { id });
+  };
   return (
     <Pressable className={`active:opacity-90 px-2 ${className}`}
-    onPress={() => navigation.navigate('MovieDetailById', { id: id })}
+    onPress={navigateToDetail}
     >
       <Image
         source={{ uri: poster }}

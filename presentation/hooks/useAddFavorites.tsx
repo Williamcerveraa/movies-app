@@ -16,7 +16,7 @@ const favoriteBtn = () =>
 
 export const useAddFavorite = () => {
   const { session_id, account_id } = useAuth();
-  const addFavorite = async (media_id: number, media_type: string) => {
+  const addFavorite = async (media_id: number, media_type: string, favorite: boolean) => {
      if (!session_id || !account_id) return;
 
   try {
@@ -29,12 +29,12 @@ export const useAddFavorite = () => {
       body: JSON.stringify({
         media_type: media_type,
         media_id: media_id,
-        favorite: true
+        favorite: favorite
       })
     });
 
     const result = await response.json();
-    console.log(`Se agrego a favoritos ${media_id}`, result);
+    //console.log(`Se agrego a favoritos ${media_id}`, result);
     favoriteBtn();
     return result;
   } catch (error) {

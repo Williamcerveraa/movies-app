@@ -24,7 +24,7 @@ const MovieScreen = () => {
       ></MovieHeader> */}
       <MovieSerieHeader
         poster={movieQuery.data.poster}
-        title={movieQuery.data.title}
+        item={movieQuery.data}
       ></MovieSerieHeader>
        <MovieSerieDescription item={movieQuery.data} media_id = {params.id}></MovieSerieDescription>
       <MovieSerieCast cast={castQuery.data ?? []}></MovieSerieCast>

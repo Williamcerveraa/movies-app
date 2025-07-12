@@ -22,7 +22,7 @@ const SerieScreen = () => {
         poster={SerieQuery.data.poster}
       ></SerieHeader> */}
        <MovieSerieHeader
-        name={SerieQuery.data.name}
+        item={SerieQuery.data}
         poster={SerieQuery.data.poster}
       ></MovieSerieHeader>
       <MovieSerieDescription item={SerieQuery.data} media_id={params.id}></MovieSerieDescription>

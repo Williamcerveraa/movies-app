@@ -4,14 +4,16 @@ import {
   useWindowDimensions,
   Image,
 } from 'react-native';
+import { CompleteMovie } from '../../infrastructure/interfaces/movie.interface';
+import { CompleteSerie } from '../../infrastructure/interfaces/serie.interface';
 
+type MediaItem = CompleteMovie | CompleteSerie;
 interface Props {
   poster: string;
-  title?: string;
-  name?: string;
+  item: MediaItem;
 }
 
-const MovieSerieHeader = ({ poster, title, name }: Props) => {
+const MovieSerieHeader = ({ poster, item}: Props) => {
   const { height: screenHeight } = useWindowDimensions();
 
   return (
@@ -30,7 +32,7 @@ const MovieSerieHeader = ({ poster, title, name }: Props) => {
       </View>
 
       <View className="px-5 mt-3 mb-3">
-        <Text className="font-semibold text-2xl text-center" >{title ? title : name}</Text>
+        <Text className="font-semibold text-2xl text-center" >{item.title ? item.title : item.name }</Text>
       </View>
     </>
   );

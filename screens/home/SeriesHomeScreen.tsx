@@ -22,6 +22,7 @@ const SeriesHomeScreen = () => {
 
        <MovieHorizontalList className="mb-5" items={airingTodaygQuery.data ?? []} title="Al Aire"></MovieHorizontalList>
        <MovieHorizontalList className="mb-5" items={popularQuery.data ?? []} title="Populares"></MovieHorizontalList>
+       <MovieHorizontalList className="mb-5" items={topRatedQuery.data ?.pages.flat() ?? []} title="Destacadas" loadNextPage={topRatedQuery.fetchNextPage}></MovieHorizontalList>
        <MovieHorizontalList className="mb-5" items={onAirQuery.data ?? []} title="Próximamente"></MovieHorizontalList>
     </View>
     </ScrollView>

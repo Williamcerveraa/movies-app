@@ -19,7 +19,7 @@ const MovieSerieDescription = ({ item, media_id }: Props) => {
         <Text className="text-base"> • {percentage}</Text>
         <Text className="text-base"> • {genres}</Text>
       </View>
-       <FavoriteIconOutline media_id = {media_id} />
+       <FavoriteIconOutline media_id = {media_id} media_type={item.title ? "movie" : "tv"} />
 
       <Text className="font-bold mt-3 text-lg">Sipnosis</Text>
       <Text className="font-normal mt-1 text-sm">{item.description ? item.description : "No hay Sipnosis."}</Text>

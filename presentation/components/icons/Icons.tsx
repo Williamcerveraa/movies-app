@@ -5,14 +5,15 @@ import { useAddFavorite } from "../../hooks/useAddFavorites";
 interface FavoritesProps {
   media_id: number;
   props?: any;
+  media_type: string;
 }
 
-export const FavoriteIconOutline = ({ media_id, props }: FavoritesProps) => {
+export const FavoriteIconOutline = ({ media_id, props,media_type }: FavoritesProps) => {
   const { addFavorite } = useAddFavorite();
   return (
     <Pressable
     className="rounded-xl bg-white px-4 py-3 mt-2"
-      onPress={() => addFavorite(media_id, "movie", true)}
+      onPress={() => addFavorite(media_id, media_type, true)}
     >
       <View className="flex-row justify-center items-start space-x-2">
         <Text className="font-semibold text-lg text-center text-black" >Agregar a favoritos</Text>
